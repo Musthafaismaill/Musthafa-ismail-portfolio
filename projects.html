@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects — Musthafa Ismail</title>
+  <title>Projects — Musthafa</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet"/>
@@ -42,7 +42,6 @@
         <li><a href="index.html#services" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Services</a></li>
         <li><a href="projects.html" class="nav-link text-accent font-medium">Work</a></li>
         <li><a href="index.html#about" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">About</a></li>
-        <li><a href="blog.html" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Blog</a></li>
         <li><a href="index.html#contact" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Contact</a></li>
       </ul>
       <div class="flex items-center gap-3">
@@ -62,7 +61,6 @@
         <li><a href="index.html#services" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">Services</a></li>
         <li><a href="projects.html" class="block text-accent font-medium">Work</a></li>
         <li><a href="index.html#about" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">About</a></li>
-        <li><a href="blog.html" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">Blog</a></li>
         <li><a href="index.html#contact" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">Contact</a></li>
       </ul>
     </div>
@@ -74,7 +72,7 @@
       <div class="max-w-6xl mx-auto px-6 relative z-10">
         <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Portfolio</p>
         <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">All Projects</h1>
-        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed mb-8">A complete look at my work across AI/ML engineering, DBMS architecture, computer vision, and scalable backend platforms.</p>
+        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed mb-8">A complete look at my work across enterprise systems, DBMS architecture, automation, AI/ML, and blockchain.</p>
         <div class="reveal flex flex-wrap gap-2">
           <template x-for="f in filterOptions" :key="f.value">
             <button
@@ -90,13 +88,6 @@
 
     <section class="pb-24">
       <div class="max-w-6xl mx-auto px-6">
-        <!--
-          CORRECTIF : on itere sur TOUS les projets, x-show + x-transition gerent
-          la visibilite de chaque carte. L'ancienne version utilisait x-for sur
-          filteredProjects (computed), ce qui forcait un re-render complet du DOM
-          a chaque changement de filtre — detruisant les classes .reveal et cachant
-          tout le contenu.
-        -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <template x-for="p in allProjects" :key="p.id">
             <div
@@ -124,7 +115,7 @@
                   </a>
                   <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4" x-text="p.desc"></p>
                   <div class="flex items-center justify-between">
-                    <a :href="p.url" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link">View project →</a>
+                    <a :href="p.url" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link">View project &rarr;</a>
                     <span class="text-xs text-zinc-400" x-text="p.year"></span>
                   </div>
                 </div>
@@ -156,7 +147,7 @@
 
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-center text-center">
-      <p class="text-sm text-zinc-400">&copy; <span id="year"></span> Musthafa Ismail. All rights reserved.</p>
+      <p class="text-sm text-zinc-400">&copy; <span id="year"></span> Musthafa. All rights reserved.</p>
     </div>
   </footer>
 
@@ -169,68 +160,90 @@
         filter: 'all',
 
         filterOptions: [
-          { value: 'all',         label: 'All (5)' },
-          { value: 'ai',          label: 'AI & Machine Learning' },
+          { value: 'all',         label: 'All (7)' },
           { value: 'dbms',        label: 'DBMS & Data' },
-          { value: 'automation',  label: 'Vision & Automation' },
+          { value: 'automation',  label: 'Automation & Systems' },
+          { value: 'ai',          label: 'AI & ML' },
           { value: 'blockchain',  label: 'Blockchain' },
         ],
 
         allProjects: [
           {
             id: 1,
-            title: 'Enterprise Data Ingestion & DBMS Architecture',
-            category: 'dbms',
-            categoryLabel: 'DBMS & Data',
-            tags: ['SQL Server', 'Laserfiche AI', 'ETL Pipeline', 'OCR'],
-            year: '2025 – 2026',
-            desc: 'Production-grade DBMS architecture on Microsoft SQL Server with Laserfiche AI ETL pipeline. Reduced manual entry and boosted data throughput by 70%.',
-            img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=80',
-            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/283005106/'
-          },
-          {
-            id: 2,
-            title: 'FalconFoot — AI Football Analytics Platform',
-            category: 'ai',
-            categoryLabel: 'AI & Machine Learning',
-            tags: ['Python', 'TensorFlow', 'Scikit-learn', 'Predictive Modeling'],
-            year: '2025 – 2026',
-            desc: 'AI-driven analytics pipeline processing player metrics, training predictive models, and generating tactical insights balancing accuracy and compute efficiency.',
-            img: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=700&q=80',
-            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/1169651550/'
-          },
-          {
-            id: 3,
-            title: 'Eco Orbit: NASA x UAE',
-            category: 'ai',
-            categoryLabel: 'AI & Machine Learning',
-            tags: ['NASA Space Apps', 'Earth Observation', 'Climate AI'],
-            year: '2025',
-            desc: 'Global Nominee representing Abu Dhabi at the NASA Space Apps Challenge 2025 (Team Nova Spires). Earth observation AI analyzing satellite streams for climate resilience.',
-            img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=80',
-            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/244965375/'
-          },
-          {
-            id: 4,
             title: 'Employee Tracking & Productivity System',
             category: 'automation',
-            categoryLabel: 'Vision & Automation',
-            tags: ['Computer Vision', 'Python', 'NestJS', 'Activity Analytics'],
+            categoryLabel: 'Automation & Systems',
+            tags: ['Internal Platform', 'Workforce Management', 'AI Insights', 'NestJS'],
             year: '2025',
-            desc: 'Intelligent workplace analytics system incorporating computer vision and automated data capture for real-time activity metrics and role-based management dashboards.',
+            desc: 'Internal operations platform for workforce management, order tracking, analytics, and AI-powered productivity insights. Delivers real-time activity metrics, automated logs, and secure role-based dashboards.',
             img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&q=80',
             url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/903205923/'
           },
           {
-            id: 5,
+            id: 2,
+            title: 'Enterprise Data Ingestion & DBMS Architecture',
+            category: 'dbms',
+            categoryLabel: 'DBMS & Data',
+            tags: ['SQL Server', 'Laserfiche AI', 'ETL Pipeline', 'OCR'],
+            year: 'Jun 2025 – Oct 2026',
+            desc: 'End-to-end digital transformation converting physical documents into clean, queryable data. Designed normalized relational schemas and indexing in SQL Server; built ETL pipeline via Laserfiche AI (OCR + classification). Boosted data throughput by 70% and eliminated manual entry.',
+            img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=80',
+            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/283005106/'
+          },
+          {
+            id: 3,
+            title: 'AMS — Automated Message Sender',
+            category: 'automation',
+            categoryLabel: 'Automation & Systems',
+            tags: ['n8n', 'WhatsApp Automation', 'Workflow', 'Cozmo Travel'],
+            year: '2024',
+            desc: 'n8n-based WhatsApp automation workflow at Cozmo Travel to automatically deliver customer boarding passes to their WhatsApp numbers, reducing repetitive manual communication and streamlining customer service operations.',
+            img: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=700&q=80',
+            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/1937966545/'
+          },
+          {
+            id: 4,
             title: 'GreenTrip Ledger',
             category: 'blockchain',
             categoryLabel: 'Blockchain',
-            tags: ['Digital Dirham API', 'Blockchain', 'Smart Ledgers'],
-            year: '2025',
-            desc: 'Award-winning prototype (2nd Best Presentation Award · Hackathon 2025) integrating Digital Dirham APIs with blockchain for tamper-proof carbon emissions accounting.',
+            tags: ['Digital Dirham API', 'Blockchain', 'AI Analytics', 'Carbon Credits'],
+            year: 'Sep 2025',
+            desc: 'Hackathon 2025 prototype linking Digital Dirham payments to the UAE Carbon Credit Registry. Uses AI + blockchain to track travel emissions and reward sustainable choices, helping tourism businesses cut costs and go green.',
             img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=700&q=80',
             url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/1337050517/'
+          },
+          {
+            id: 5,
+            title: 'FalconFoot — AI Football Analytics Platform',
+            category: 'ai',
+            categoryLabel: 'AI & ML',
+            tags: ['YOLOv8', 'ByteTrack', 'Python', 'React/Vite', 'NestJS', 'OpenCV'],
+            year: 'Jan 2025 – Jul 2026',
+            desc: 'Full-stack AI web app for automated football match analysis. 7-stage CV pipeline: YOLOv8m detection → ByteTrack tracking → HSV team classification → physical metrics → heatmaps → Kimi K2.5 LLM tactical reports (EN & AR) → annotated video. Reframed as "PitchIQ" for ICFAI Industry 6.0 conference (April 2026).',
+            img: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=700&q=80',
+            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/1169651550/'
+          },
+          {
+            id: 6,
+            title: 'Eco Orbit: NASA x UAE',
+            category: 'ai',
+            categoryLabel: 'AI & ML',
+            tags: ['NASA Space Apps', 'Earth Observation', 'Climate AI', 'UAE Sustainability'],
+            year: 'Oct 2025',
+            desc: 'Brings NASA\'s Earth observation data closer to home — interactive, human-centred climate data tied to UAE sustainability goals. Global Nominee (Team Nova Spires, Abu Dhabi). Made satellite data purposeful and impactful for sustainability education.',
+            img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=700&q=80',
+            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/244965375/'
+          },
+          {
+            id: 7,
+            title: 'LPG Gas Detector',
+            category: 'automation',
+            categoryLabel: 'Automation & Systems',
+            tags: ['IoT', 'Hardware', 'Home Safety', 'Gulf Medical University'],
+            year: 'Jul – Oct 2022',
+            desc: 'Home safety device developed at Gulf Medical University. Leverages state-of-the-art sensor technology to act as a vigilant guardian against potential LPG gas leaks, delivering reliable protection for households worldwide.',
+            img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80',
+            url: 'https://www.linkedin.com/in/musthafa-ismail-dev/details/projects/edit/forms/1326038613/'
           }
         ],
 
